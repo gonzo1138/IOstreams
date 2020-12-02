@@ -25,13 +25,13 @@ public class Main {
         int zeichen;
         char buchstabe;
         int zeilen = 0;
-        String zeile = zeilen + "\t";
+        String zeile = zeilen+1 + "\t";
         ArrayList<String> text = new ArrayList<String>(0);
 
         try {
             fr = new FileReader(inputfile);
             fw = new FileWriter(outputfile);
-            // Alle Zeilen lesen und in ArrayList speichern
+            // Alle Zeilen lesen und in eine ArrayList speichern
             while ((zeichen = fr.read()) != -1) {
                 buchstabe = (char) zeichen;
                 if (buchstabe != '\n'){
@@ -39,10 +39,10 @@ public class Main {
                 } else {
                     text.add(zeilen, zeile);
                     zeilen++;
-                    zeile = zeilen + "\t";
+                    zeile = zeilen+1 + "\t";
                 }
             }
-            // ArrayList Zeile für Zeile in Datei schreiben
+            // String-ArrayList Zeile für Zeile in Datei schreiben
             for(int i=0; i<text.size(); i++) {
                 zeile = text.get(i).toUpperCase();
                 for (int j=0; j<zeile.length(); j++){
