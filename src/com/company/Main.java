@@ -43,14 +43,18 @@ public class Main {
                 }
             }
             // String-ArrayList Zeile für Zeile in Datei schreiben
-            for(int i=0; i<text.size(); i++) {
+            /*for(int i=0; i<text.size(); i++) {
                 zeile = text.get(i).toUpperCase();
                 for (int j=0; j<zeile.length(); j++){
                     fw.write(zeile.charAt(j));
                 }
                 fw.write('\n');
+            }*/
+            for (String s : text){
+                s = s.toUpperCase();
+                fw.write(s);
+                fw.write("\n");
             }
-
             fr.close();
             fw.close();
         } catch (IOException e) {
