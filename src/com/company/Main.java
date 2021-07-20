@@ -31,8 +31,8 @@ public class Main {
         try {
             fr = new FileReader(inputfile);
             fw = new FileWriter(outputfile);
-            // Alle Zeilen lesen und in eine ArrayList speichern
-            while ((zeichen = fr.read()) != -1) {
+
+            while ((zeichen = fr.read()) != -1) {   // Alle Zeilen lesen und in eine ArrayList speichern
                 buchstabe = (char) zeichen;
                 if (buchstabe != '\n'){
                     zeile += buchstabe;
@@ -42,20 +42,22 @@ public class Main {
                     zeile = zeilen+1 + "\t";
                 }
             }
-            // String-ArrayList Zeile für Zeile in Datei schreiben
-            /*for(int i=0; i<text.size(); i++) {
+
+            /*for(int i=0; i<text.size(); i++) {    // String-ArrayList Zeile für Zeile in Datei schreiben
                 zeile = text.get(i).toUpperCase();
                 for (int j=0; j<zeile.length(); j++){
                     fw.write(zeile.charAt(j));
                 }
                 fw.write('\n');
             }*/
-            for (String s : text){
+            for (String s : text){                  // oder kürzer
                 s = s.toUpperCase();
                 fw.write(s);
                 fw.write("\n");
             }
             fr.close();
+            System.out.println(inputfile.compareTo(outputfile));
+            fw.flush();                             // schreibt den ggf. noch vorhandenen Puffer in die Datei
             fw.close();
         } catch (IOException e) {
             e.printStackTrace();
